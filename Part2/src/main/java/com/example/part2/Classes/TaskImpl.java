@@ -1,5 +1,6 @@
 package com.example.part2.Classes;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class TaskImpl implements Task{
@@ -9,6 +10,7 @@ public class TaskImpl implements Task{
     private Date dueDate ;
     private Complete status;
     private Priorities prioritie ;
+    private ArrayList<Category> categories ;
 
     /**
      * Create a new Task not exist
@@ -24,6 +26,14 @@ public class TaskImpl implements Task{
         this.status = Complete.not_complated ;
     }
 
+    public TaskImpl(int id_T,String name, String description, Date dueDate, Complete status) {
+        this.id_T = id_T ;
+        this.name = name;
+        this.description = description;
+        this.dueDate = dueDate ;
+        this.status = status;
+    }
+
     /**
      * Create new object of task exit in DateBase
      * @param id_T
@@ -31,13 +41,15 @@ public class TaskImpl implements Task{
      * @param description
      * @param dueDate
      * @param status
+     * @param categories
      */
-    public TaskImpl(int id_T, String name, String description, Date dueDate,Complete status) {
+    public TaskImpl(int id_T, String name, String description, Date dueDate,Complete status , ArrayList<Category> categories) {
         this.id_T = id_T ;
         this.name = name;
         this.description = description;
         this.dueDate = dueDate ;
         this.status = status ;
+        this.categories = categories ;
     }
 
     /**
@@ -86,7 +98,7 @@ public class TaskImpl implements Task{
     }
 
     /**
-     * this methode if the user wont chenge the prioritie
+     * this methode if the user want chenge the prioritie
      * @param prioritie
      */
     public void editPrioritie(Priorities prioritie) {
