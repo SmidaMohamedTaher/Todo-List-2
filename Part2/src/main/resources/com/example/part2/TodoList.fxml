@@ -1,0 +1,604 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="557.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.part2.HelloController">
+    <stylesheets>
+        <URL value="@todolist.css" />
+    </stylesheets>
+    <children>
+        <BorderPane prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: #101010;" stylesheets="@todolist.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <left>
+                <VBox prefHeight="557.0" prefWidth="287.0" styleClass="right-bar" BorderPane.alignment="CENTER">
+                    <children>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                            <children>
+                                <Label alignment="CENTER" prefHeight="32.0" prefWidth="79.0" text="Task" textFill="#c2562e">
+                                    <HBox.margin>
+                                        <Insets top="1.0" />
+                                    </HBox.margin>
+                                    <font>
+                                        <Font name="SansSerif Bold Italic" size="27.0" />
+                                    </font>
+                                </Label>
+                                <Label alignment="CENTER" text="manager" textFill="WHITE">
+                                    <font>
+                                        <Font name="SansSerif Italic" size="27.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="49.0" prefWidth="240.0" styleClass="search-box">
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <VBox.margin>
+                                <Insets left="30.0" right="30.0" />
+                            </VBox.margin>
+                            <children>
+                                <TextField fx:id="sherchWord" alignment="CENTER" prefHeight="20.0" prefWidth="145.0" styleClass="transparent" stylesheets="@todolist.css" text="Type here to search">
+                                    <HBox.margin>
+                                        <Insets />
+                                    </HBox.margin>
+                                    <font>
+                                        <Font name="SansSerif Regular" size="12.0" />
+                                    </font>
+                                </TextField>
+                                <Button mnemonicParsing="false" onAction="#sherch" prefHeight="20.0" prefWidth="70.0" styleClass="search-button" text="Search" textFill="WHITE" />
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="35.0" prefWidth="287.0" VBox.vgrow="ALWAYS">
+                            <VBox.margin>
+                                <Insets top="3.0" />
+                            </VBox.margin>
+                            <children>
+                                <Separator opacity="0.35" prefHeight="18.0" prefWidth="444.0">
+                                    <HBox.margin>
+                                        <Insets />
+                                    </HBox.margin>
+                                </Separator>
+                            </children>
+                        </HBox>
+                        <VBox prefHeight="337.0" prefWidth="227.0" styleClass="create-task-bar" VBox.vgrow="ALWAYS">
+                            <VBox.margin>
+                                <Insets bottom="25.0" left="30.0" right="30.0" />
+                            </VBox.margin>
+                            <children>
+                                <HBox alignment="CENTER" prefHeight="57.0" prefWidth="187.0" VBox.vgrow="ALWAYS">
+                                    <children>
+                                        <Label text="Create Task" textFill="WHITE">
+                                            <font>
+                                                <Font name="SansSerif Bold" size="24.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets />
+                                    </VBox.margin>
+                                </HBox>
+                                <HBox alignment="CENTER" prefHeight="23.0" prefWidth="181.0" VBox.vgrow="ALWAYS">
+                                    <opaqueInsets>
+                                        <Insets />
+                                    </opaqueInsets>
+                                    <children>
+                                        <TextField fx:id="taskName" alignment="CENTER" prefHeight="20.0" prefWidth="145.0" promptText="Task name " styleClass="transparent" stylesheets="@todolist.css" text="Task name ">
+                                            <HBox.margin>
+                                                <Insets />
+                                            </HBox.margin>
+                                            <font>
+                                                <Font name="SansSerif Regular" size="12.0" />
+                                            </font>
+                                        </TextField>
+                                    </children>
+                                    <styleClass>
+                                        <String fx:value="TaskName-box" />
+                                        <String fx:value="shadow" />
+                                    </styleClass>
+                                    <VBox.margin>
+                                        <Insets left="20.0" right="20.0" />
+                                    </VBox.margin>
+                                </HBox>
+                                <HBox alignment="CENTER" prefHeight="130.0" prefWidth="187.0" VBox.vgrow="ALWAYS">
+                                    <VBox.margin>
+                                        <Insets top="20.0" />
+                                    </VBox.margin>
+                                    <children>
+                                        <TextArea fx:id="taskDescription" blendMode="SOFT_LIGHT" cache="true" prefHeight="163.0" prefWidth="187.0" promptText="description ..." styleClass="shadow">
+                                            <font>
+                                                <Font size="15.0" />
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets />
+                                            </HBox.margin>
+                                        </TextArea>
+                                    </children>
+                                </HBox>
+                                <HBox alignment="CENTER" prefHeight="30.0" prefWidth="177.0" VBox.vgrow="ALWAYS">
+                                    <VBox.margin>
+                                        <Insets left="5.0" right="5.0" top="15.0" />
+                                    </VBox.margin>
+                                    <children>
+                                        <DatePicker fx:id="taskDate" blendMode="SOFT_LIGHT" cache="true" cacheHint="ROTATE" prefHeight="58.0" prefWidth="174.0" styleClass="transparent" HBox.hgrow="ALWAYS">
+                                            <HBox.margin>
+                                                <Insets bottom="17.0" />
+                                            </HBox.margin>
+                                        </DatePicker>
+                                    </children>
+                                </HBox>
+                                <HBox alignment="CENTER" prefHeight="53.0" prefWidth="227.0" VBox.vgrow="ALWAYS">
+                                    <children>
+                                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#addTask" prefHeight="36.0" prefWidth="101.0" styleClass="save-button" text="Save" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                            <font>
+                                                <Font name="SansSerif Regular" size="15.0" />
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets />
+                                            </HBox.margin>
+                                        </Button>
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets bottom="5.0" />
+                                    </VBox.margin>
+                                </HBox>
+                            </children>
+                        </VBox>
+                    </children>
+                </VBox>
+            </left>
+            <center>
+                <VBox prefHeight="557.0" prefWidth="674.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <HBox prefHeight="152.0" prefWidth="674.0">
+                            <children>
+                                <VBox alignment="CENTER" prefHeight="120.0" prefWidth="198.0">
+                                    <children>
+                                        <VBox prefHeight="120.0" prefWidth="232.0" style="-fx-background-color: #c2562e; -fx-background-radius: 2em;">
+                                            <VBox.margin>
+                                                <Insets left="20.0" right="20.0" />
+                                            </VBox.margin>
+                                            <children>
+                                                <HBox prefHeight="61.0" prefWidth="158.0">
+                                                    <children>
+                                                        <Label alignment="CENTER" prefHeight="43.0" prefWidth="122.0" text="Task name : " textFill="WHITE">
+                                                            <font>
+                                                                <Font name="SansSerif Bold Italic" size="15.0" />
+                                                            </font>
+                                                            <HBox.margin>
+                                                                <Insets top="5.0" />
+                                                            </HBox.margin>
+                                                        </Label>
+                                                    </children>
+                                                </HBox>
+                                                <HBox prefHeight="69.0" prefWidth="158.0">
+                                                    <children>
+                                                        <Label opacity="0.19" prefHeight="24.0" prefWidth="158.0" text="       The task name" textFill="WHITE">
+                                                            <font>
+                                                                <Font name="SansSerif Regular" size="15.0" />
+                                                            </font>
+                                                            <HBox.margin>
+                                                                <Insets />
+                                                            </HBox.margin>
+                                                        </Label>
+                                                    </children>
+                                                </HBox>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                    <HBox.margin>
+                                        <Insets top="20.0" />
+                                    </HBox.margin>
+                                </VBox>
+                                <VBox prefHeight="152.0" prefWidth="262.0">
+                                    <children>
+                                        <HBox alignment="CENTER" prefHeight="56.0" prefWidth="256.0" style="-fx-background-color: #404040; -fx-background-radius: 2em;">
+                                            <children>
+                                                <HBox alignment="CENTER" prefHeight="56.0" prefWidth="109.0">
+                                                    <padding>
+                                                        <Insets right="10.0" />
+                                                    </padding>
+                                                    <children>
+                                                        <Label prefHeight="25.0" prefWidth="74.0" text="Reminder :" textFill="WHITE">
+                                                            <font>
+                                                                <Font name="SansSerif Bold" size="13.0" />
+                                                            </font>
+                                                            <HBox.margin>
+                                                                <Insets left="20.0" />
+                                                            </HBox.margin>
+                                                        </Label>
+                                                    </children>
+                                                </HBox>
+                                                <HBox alignment="CENTER" prefHeight="56.0" prefWidth="161.0">
+                                                    <children>
+                                                        <TextField alignment="CENTER" blendMode="MULTIPLY" cache="true" cacheHint="SPEED" prefHeight="26.0" prefWidth="175.0" styleClass="transparent" stylesheets="@todolist.css" text="Add reminder">
+                                                            <font>
+                                                                <Font name="SansSerif Regular" size="13.0" />
+                                                            </font>
+                                                            <HBox.margin>
+                                                                <Insets />
+                                                            </HBox.margin>
+                                                            <padding>
+                                                                <Insets right="20.0" />
+                                                            </padding>
+                                                        </TextField>
+                                                    </children>
+                                                </HBox>
+                                            </children>
+                                            <VBox.margin>
+                                                <Insets top="30.0" />
+                                            </VBox.margin>
+                                        </HBox>
+                                        <HBox alignment="CENTER" prefHeight="56.0" prefWidth="256.0" style="-fx-background-color: #404040; -fx-background-radius: 2em;">
+                                            <VBox.margin>
+                                                <Insets top="5.0" />
+                                            </VBox.margin>
+                                            <children>
+                                                <HBox alignment="CENTER" prefHeight="56.0" prefWidth="109.0">
+                                                    <padding>
+                                                        <Insets right="10.0" />
+                                                    </padding>
+                                                    <children>
+                                                        <Label prefHeight="25.0" prefWidth="74.0" text="comment :" textFill="WHITE">
+                                                            <font>
+                                                                <Font name="SansSerif Bold" size="13.0" />
+                                                            </font>
+                                                            <HBox.margin>
+                                                                <Insets left="20.0" />
+                                                            </HBox.margin>
+                                                        </Label>
+                                                    </children>
+                                                </HBox>
+                                                <HBox alignment="CENTER" prefHeight="56.0" prefWidth="161.0">
+                                                    <children>
+                                                        <TextField alignment="CENTER" blendMode="MULTIPLY" cache="true" cacheHint="SPEED" prefHeight="26.0" prefWidth="175.0" styleClass="transparent" stylesheets="@todolist.css" text="Add comment or notes">
+                                                            <HBox.margin>
+                                                                <Insets />
+                                                            </HBox.margin>
+                                                            <font>
+                                                                <Font name="SansSerif Regular" size="13.0" />
+                                                            </font>
+                                                            <padding>
+                                                                <Insets right="20.0" />
+                                                            </padding>
+                                                        </TextField>
+                                                    </children>
+                                                </HBox>
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                </VBox>
+                                <VBox alignment="CENTER" prefHeight="152.0" prefWidth="118.0">
+                                    <children>
+                                        <Button mnemonicParsing="false" onAction="#refresh" prefHeight="56.0" prefWidth="96.0" text="refresh" textFill="WHITE">
+                                            <font>
+                                                <Font name="SansSerif Regular" size="15.0" />
+                                            </font>
+                                            <styleClass>
+                                                <String fx:value="Abandoned-button" />
+                                                <String fx:value="refrech-button" />
+                                            </styleClass>
+                                            <VBox.margin>
+                                                <Insets top="25.0" />
+                                            </VBox.margin>
+                                        </Button>
+                                        <Button mnemonicParsing="false" prefHeight="53.0" prefWidth="96.0" text="Edit" textFill="WHITE" VBox.vgrow="ALWAYS">
+                                            <font>
+                                                <Font name="SansSerif Regular" size="15.0" />
+                                            </font>
+                                            <VBox.margin>
+                                                <Insets top="5.0" />
+                                            </VBox.margin>
+                                            <styleClass>
+                                                <String fx:value="Abandoned-button" />
+                                                <String fx:value="refrech-button" />
+                                            </styleClass>
+                                        </Button>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="54.0" prefWidth="573.0" style="-fx-background-color: #232323; -fx-background-radius: 2em;">
+                            <VBox.margin>
+                                <Insets left="20.0" right="20.0" />
+                            </VBox.margin>
+                            <children>
+                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="82.0" prefWidth="127.0" text="Task Name" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                    <font>
+                                        <Font name="SansSerif Bold" size="12.0" />
+                                    </font>
+                                </Label>
+                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="212.0" text="Description" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                    <font>
+                                        <Font name="SansSerif Regular" size="12.0" />
+                                    </font>
+                                    <HBox.margin>
+                                        <Insets />
+                                    </HBox.margin>
+                                </Label>
+                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="108.0" text="DueDate" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                    <font>
+                                        <Font name="SansSerif Regular" size="12.0" />
+                                    </font>
+                                    <HBox.margin>
+                                        <Insets />
+                                    </HBox.margin>
+                                </Label>
+                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="159.0" text="Status" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                    <font>
+                                        <Font name="SansSerif Regular" size="12.0" />
+                                    </font>
+                                    <HBox.margin>
+                                        <Insets />
+                                    </HBox.margin>
+                                </Label>
+                            </children>
+                        </HBox>
+                        <VBox fx:id="ListOfTaskes" prefHeight="331.0" prefWidth="548.0" style="-fx-background-color: #232323; -fx-background-radius: 2em;" styleClass="VboxList" VBox.vgrow="ALWAYS">
+                            <VBox.margin>
+                                <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                            </VBox.margin>
+                            <children>
+                                <HBox prefHeight="72.0" prefWidth="533.0" style="-fx-background-color: #505050; -fx-background-radius: 2em;">
+                                    <children>
+                                        <HBox prefHeight="72.0" prefWidth="147.0">
+                                            <children>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="82.0" prefWidth="127.0" text="Task1" textFill="WHITE">
+                                                    <font>
+                                                        <Font name="SansSerif Regular" size="15.0" />
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </HBox>
+                                        <HBox prefHeight="72.0" prefWidth="188.0">
+                                            <children>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="91.0" prefWidth="168.0" text="Description1..." textFill="WHITE">
+                                                    <font>
+                                                        <Font name="SansSerif Regular" size="15.0" />
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </HBox>
+                                        <HBox prefHeight="64.0" prefWidth="242.0">
+                                            <children>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="64.0" prefWidth="322.0" text="dd/mm/yyyy" textFill="WHITE">
+                                                    <font>
+                                                        <Font name="SansSerif Regular" size="15.0" />
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER" prefHeight="64.0" prefWidth="205.0">
+                                            <children>
+                                                <Button alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" prefWidth="117.0" stylesheets="@todolist.css" text="Complited" textFill="WHITE">
+                                                    <font>
+                                                        <Font name="SansSerif Italic" size="12.0" />
+                                                    </font>
+                                                    <styleClass>
+                                                        <String fx:value="complited-button" />
+                                                        <String fx:value="shadow" />
+                                                    </styleClass>
+                                                </Button>
+                                                <Button fx:id="status1" mnemonicParsing="false" prefHeight="34.0" prefWidth="77.0" styleClass="Delete-button" stylesheets="@todolist.css" text="Delete" textFill="WHITE">
+                                                    <font>
+                                                        <Font name="SansSerif Italic" size="12.0" />
+                                                    </font>
+                                                    <HBox.margin>
+                                                        <Insets left="10.0" />
+                                                    </HBox.margin>
+                                                </Button>
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                </HBox>
+                                <HBox prefHeight="72.0" prefWidth="533.0" style="-fx-background-color: #505050; -fx-background-radius: 2em;">
+                                    <children>
+                                        <HBox prefHeight="72.0" prefWidth="147.0">
+                                            <children>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="82.0" prefWidth="127.0" text="Task2" textFill="WHITE">
+                                                    <font>
+                                                        <Font name="SansSerif Regular" size="15.0" />
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </HBox>
+                                        <HBox prefHeight="72.0" prefWidth="188.0">
+                                            <children>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="91.0" prefWidth="168.0" text="Description2..." textFill="WHITE">
+                                                    <font>
+                                                        <Font name="SansSerif Regular" size="15.0" />
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </HBox>
+                                        <HBox prefHeight="64.0" prefWidth="242.0">
+                                            <children>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="64.0" prefWidth="322.0" text="dd/mm/yyyy" textFill="WHITE">
+                                                    <font>
+                                                        <Font name="SansSerif Regular" size="15.0" />
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER" prefHeight="64.0" prefWidth="205.0">
+                                            <children>
+                                                <Button alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" prefWidth="117.0" stylesheets="@todolist.css" text="Not Complited">
+                                                    <font>
+                                                        <Font name="SansSerif Italic" size="12.0" />
+                                                    </font>
+                                                    <styleClass>
+                                                        <String fx:value="not-complited-button" />
+                                                        <String fx:value="shadow" />
+                                                    </styleClass>
+                                                </Button>
+                                                <HBox prefHeight="100.0" prefWidth="65.0" />
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets top="2.0" />
+                                    </VBox.margin>
+                                </HBox>
+                                <HBox prefHeight="72.0" prefWidth="533.0" style="-fx-background-color: #505050; -fx-background-radius: 2em;">
+                                    <children>
+                                        <HBox prefHeight="72.0" prefWidth="147.0">
+                                            <children>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="82.0" prefWidth="127.0" text="Task3" textFill="WHITE">
+                                                    <font>
+                                                        <Font name="SansSerif Regular" size="15.0" />
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </HBox>
+                                        <HBox prefHeight="72.0" prefWidth="188.0">
+                                            <children>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="91.0" prefWidth="168.0" text="Description3..." textFill="WHITE">
+                                                    <font>
+                                                        <Font name="SansSerif Regular" size="15.0" />
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </HBox>
+                                        <HBox prefHeight="64.0" prefWidth="242.0">
+                                            <children>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="64.0" prefWidth="322.0" text="dd/mm/yyyy" textFill="WHITE">
+                                                    <font>
+                                                        <Font name="SansSerif Regular" size="15.0" />
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER" prefHeight="64.0" prefWidth="205.0">
+                                            <children>
+                                                <Button alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" prefWidth="117.0" stylesheets="@todolist.css" text="Not Complited">
+                                                    <font>
+                                                        <Font name="SansSerif Italic" size="12.0" />
+                                                    </font>
+                                                    <styleClass>
+                                                        <String fx:value="not-complited-button" />
+                                                        <String fx:value="shadow" />
+                                                    </styleClass>
+                                                </Button>
+                                                <HBox prefHeight="100.0" prefWidth="65.0" />
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets top="2.0" />
+                                    </VBox.margin>
+                                </HBox>
+                                <HBox prefHeight="72.0" prefWidth="533.0" style="-fx-background-color: #505050; -fx-background-radius: 2em;">
+                                    <children>
+                                        <HBox prefHeight="72.0" prefWidth="147.0">
+                                            <children>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="82.0" prefWidth="127.0" text="Task4" textFill="WHITE">
+                                                    <font>
+                                                        <Font name="SansSerif Regular" size="15.0" />
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </HBox>
+                                        <HBox prefHeight="72.0" prefWidth="188.0">
+                                            <children>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="91.0" prefWidth="168.0" text="Description4..." textFill="WHITE">
+                                                    <font>
+                                                        <Font name="SansSerif Regular" size="15.0" />
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </HBox>
+                                        <HBox prefHeight="64.0" prefWidth="242.0">
+                                            <children>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="64.0" prefWidth="322.0" text="dd/mm/yyyy" textFill="WHITE">
+                                                    <font>
+                                                        <Font name="SansSerif Regular" size="15.0" />
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER" prefHeight="64.0" prefWidth="205.0">
+                                            <children>
+                                                <Button alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" prefWidth="117.0" stylesheets="@todolist.css" text="Not Complited">
+                                                    <font>
+                                                        <Font name="SansSerif Italic" size="12.0" />
+                                                    </font>
+                                                    <styleClass>
+                                                        <String fx:value="not-complited-button" />
+                                                        <String fx:value="shadow" />
+                                                    </styleClass>
+                                                </Button>
+                                                <HBox prefHeight="100.0" prefWidth="65.0" />
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets top="2.0" />
+                                    </VBox.margin>
+                                </HBox>
+                                <HBox prefHeight="72.0" prefWidth="533.0" style="-fx-background-color: #505050; -fx-background-radius: 2em;">
+                                    <children>
+                                        <HBox prefHeight="72.0" prefWidth="147.0">
+                                            <children>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="82.0" prefWidth="127.0" text="Task5" textFill="WHITE">
+                                                    <font>
+                                                        <Font name="SansSerif Regular" size="15.0" />
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </HBox>
+                                        <HBox prefHeight="72.0" prefWidth="188.0">
+                                            <children>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="91.0" prefWidth="168.0" text="Description5..." textFill="WHITE">
+                                                    <font>
+                                                        <Font name="SansSerif Regular" size="15.0" />
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </HBox>
+                                        <HBox prefHeight="64.0" prefWidth="242.0">
+                                            <children>
+                                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="64.0" prefWidth="322.0" text="dd/mm/yyyy" textFill="WHITE">
+                                                    <font>
+                                                        <Font name="SansSerif Regular" size="15.0" />
+                                                    </font>
+                                                </Label>
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER" prefHeight="64.0" prefWidth="205.0">
+                                            <children>
+                                                <Button alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" prefWidth="117.0" stylesheets="@todolist.css" text="Not Complited">
+                                                    <font>
+                                                        <Font name="SansSerif Italic" size="12.0" />
+                                                    </font>
+                                                    <styleClass>
+                                                        <String fx:value="not-complited-button" />
+                                                        <String fx:value="shadow" />
+                                                    </styleClass>
+                                                </Button>
+                                                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="65.0" />
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets top="2.0" />
+                                    </VBox.margin>
+                                </HBox>
+                            </children>
+                        </VBox>
+                    </children>
+                </VBox>
+            </center>
+        </BorderPane>
+    </children>
+</AnchorPane>
