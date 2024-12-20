@@ -25,6 +25,13 @@ public interface Task  {
      */
     public void markAsNotComplated() ;
 
+
+    /**
+     * this function to edit the prioritie of the task
+     * @param prioritie
+     */
+    public void editPrioritie(Priorities prioritie) ;
+
     /**
      * this geter to return the id of the task
      * @return int
@@ -54,5 +61,11 @@ public interface Task  {
      * @return
      */
     public Complete getStatus() ;
+
+    /**
+     * this geter ot return the prioritie of the task
+     * @return
+     */
+    public Priorities getPriorities() ;
 
 }

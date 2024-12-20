@@ -34,17 +34,6 @@ public class HelloController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//        Timeline timeline = new Timeline(
-//                new KeyFrame(Duration.seconds(1), e -> {
-//                    try {
-//                        displayAllTasks(List.displayTasks());
-//                    } catch (IOException ex) {
-//                        throw new RuntimeException(ex);
-//                    }
-//                })
-//        );
-//        timeline.setCycleCount(Timeline.INDEFINITE);
-//        timeline.play();
         ListOfTaskes.getChildren().clear();
         try {
             displayAllTasks(List.displayTasks());
