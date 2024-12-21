@@ -1,13 +1,14 @@
 package com.example.part2;
 
-import com.almasb.fxgl.notification.Notification;
 import com.example.part2.Classes.*;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import org.controlsfx.control.Notifications;
@@ -30,12 +31,19 @@ public class HelloController implements Initializable {
     @FXML
     private TextField sherchWord ;
     @FXML
+    private TextField searchCatigory ;
+    @FXML
     private DatePicker taskDate ;
     Label i = new Label() ;
 
     TaskList List = new TaskListImpl() ;
+    CategoryList catList = new CategoryList() ;
 
 
+    /*
+        find the list catigory from databases
+        searchCatigory is woring , it must be not TextField 
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ListOfTaskes.getChildren().clear();
@@ -47,7 +55,21 @@ public class HelloController implements Initializable {
 
     }
 
+    @FXML
+    protected void  deleteTask(String name) throws IOException {
 
+        for (Task t : List.displayTasks()){
+            if (t.getName().equals(name)) {
+                List.deleteTask(t);
+                break;
+            }
+        }
+
+        refresh();
+
+
+
+    }
 
     @FXML
     protected void addTask() throws IOException {
@@ -94,6 +116,14 @@ public class HelloController implements Initializable {
         TaskDateLable.setText(dateOfTask.toString()) ;
         statusButtom.setText(status.toString()) ;
 
+        deleteButtom.setOnAction(event -> {
+            try {
+                deleteTask(taskNameLable.getText());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
         if (status == Complete.not_complated) {
             statusButtom.getStyleClass().add("not-complited-button") ;
         } else if (status == Complete.complated) {
@@ -128,6 +158,13 @@ public class HelloController implements Initializable {
     protected void sherch() throws IOException {
         ArrayList<Task> sherchingTasks = List.searchByKyword(sherchWord.getText());
         displayAllTasks(sherchingTasks);
+
+    }
+
+    @FXML
+    protected void searchByCatigory() throws IOException {
+        ArrayList<Task> findTask = List.searchByCategory(catList.findTheCatigory(searchCatigory.getText())) ;
+        displayAllTasks(findTask);
 
     }
 

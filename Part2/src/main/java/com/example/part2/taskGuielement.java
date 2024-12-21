@@ -29,18 +29,7 @@ public class taskGuielement {
 
     TaskListImpl list = new TaskListImpl(DataBaseControler.findAll()) ;
 
-    @FXML
-    protected void deleteTask() throws IOException {
-        String name = taskLabel.getText();
 
-        for (Task t : list.displayTasks()){
-            if (t.getName().equals(name)) {
-                list.deleteTask(t);
-                break;
-            }
-        }
-
-    }
 
     @FXML
     protected void editStatus() throws IOException {

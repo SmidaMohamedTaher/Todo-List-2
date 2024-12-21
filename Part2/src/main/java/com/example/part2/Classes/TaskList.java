@@ -41,4 +41,6 @@ public abstract class TaskList {
      */
     public abstract ArrayList<Task> searchByKyword(String word) ;
 
+    public abstract ArrayList<Task> searchByCategory(Category category) ;
+
 }
