@@ -1,5 +1,6 @@
 package com.example.part2.Classes;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -24,6 +25,7 @@ public class TaskImpl implements Task{
         this.description = description;
         this.dueDate = dueDate ;
         this.status = Complete.not_complated ;
+
     }
 
     public TaskImpl(int id_T,String name, String description, Date dueDate, Complete status) {

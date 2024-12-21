@@ -1,12 +1,16 @@
 package com.example.part2;
 
+import com.almasb.fxgl.notification.Notification;
 import com.example.part2.Classes.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import org.controlsfx.control.Notifications;
 
 import java.io.IOException;
 import java.net.URL;
@@ -56,6 +60,19 @@ public class HelloController implements Initializable {
         taskDescription.clear();
         sherchWord.clear();
         taskDate.setValue(null);
+
+        Image image = new Image("file:src/main/resources/com/example/part2/download.jpeg") ;
+
+        ImageView imageView = new ImageView(image);
+        imageView.setFitWidth(30); // ضبط عرض الصورة
+        imageView.setFitHeight(30); // ضبط ارتفاع الصورة
+        imageView.setPreserveRatio(true);
+
+        Notifications.create()
+                .title("Notification")
+                .text("you add a new Task")
+                .graphic(imageView)
+                .show();
 
     }
 
@@ -117,6 +134,8 @@ public class HelloController implements Initializable {
     @FXML
     private void refresh() throws IOException{
         displayAllTasks(List.displayTasks());
+
+
     }
 
 }
