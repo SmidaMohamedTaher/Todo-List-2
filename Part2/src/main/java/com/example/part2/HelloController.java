@@ -126,7 +126,7 @@ public class HelloController implements Initializable {
 
     @FXML
     protected void sherch() throws IOException {
-        ArrayList<Task> sherchingTasks = List.search(sherchWord.getText());
+        ArrayList<Task> sherchingTasks = List.searchByKyword(sherchWord.getText());
         displayAllTasks(sherchingTasks);
 
     }

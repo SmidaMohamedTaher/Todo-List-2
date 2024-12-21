@@ -39,6 +39,6 @@ public abstract class TaskList {
      * @param word
      * @return ArrayList<Task>
      */
-    public abstract ArrayList<Task> search(String word) ;
+    public abstract ArrayList<Task> searchByKyword(String word) ;
 
 }

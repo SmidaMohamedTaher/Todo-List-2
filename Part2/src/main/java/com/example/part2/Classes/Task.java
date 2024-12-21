@@ -68,4 +68,11 @@ public interface Task  {
      */
     public Priorities getPriorities() ;
 
+    /**
+     * this function to chick if the task Belongs to the Catigory
+     * @param category
+     * @return
+     */
+    public boolean isMyCategory(Category category) ;
+
 }

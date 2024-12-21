@@ -81,7 +81,7 @@ public class TaskListImpl extends TaskList{
      * @param word
      * @return ArrayList<Task>
      */
-    public ArrayList<Task> search(String word){
+    public ArrayList<Task> searchByKyword(String word){
         ArrayList<Task> Findtasks = new ArrayList<>();
         for (Task task : this.tasks) {
             if (task.getName().contains(word) || task.getDescription().contains(word)) {
@@ -90,6 +90,24 @@ public class TaskListImpl extends TaskList{
         }
         
         return Findtasks;
+    }
+
+    /**
+     * this function to find the tasks belomgs to the sime catigory
+     * @param category
+     * @return
+     */
+    
+    public ArrayList<Task> searchByCategory(Category category){
+        ArrayList<Task> findtasks = new ArrayList<Task>();
+        
+        for (Task task : this.tasks) {
+            if (task.isMyCategory(category)) {
+                findtasks.add(task);
+            }
+        }
+
+        return findtasks;
     }
 
     /**

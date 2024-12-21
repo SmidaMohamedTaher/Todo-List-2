@@ -114,6 +114,22 @@ public class TaskImpl implements Task{
         this.status = Complete.not_complated ;
     }
 
+    /**
+     * this function to chick if the task Belongs to Catigory
+     * @param category
+     * @return
+     */
+    public boolean isMyCategory(Category category){
+
+        for (Category c : categories) {
+            if (c == category) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public int getId_T() {
         return this.id_T;
     }
