@@ -2,8 +2,7 @@ package com.example.part2.Classes;
 
 
 
-import com.example.part2.DataBases.DataBaseControler;
-
+import com.example.part2.DataBases.Task_Data_Base_Method;
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -31,7 +30,7 @@ public class TaskListImpl extends TaskList{
      * @param task
      */
     public  void addTask(Task task){
-        DataBaseControler.create(task) ;
+        Task_Data_Base_Method.create(task);
         update();
     }
 
@@ -40,7 +39,7 @@ public class TaskListImpl extends TaskList{
      * @param task
      */
     public void deleteTask(Task task){
-       DataBaseControler.deleteById(task.getId_T());
+       Task_Data_Base_Method.deleteById(task.getId_T());
        update();
     }
 
@@ -53,7 +52,7 @@ public class TaskListImpl extends TaskList{
         for (Task task1 : this.tasks) {
             if (task1.getId_T() == idOfTask) {
                 task1.edit(task);
-                DataBaseControler.update(task1);
+                Task_Data_Base_Method.update(task1);
                 update();
                 break;
             }
@@ -114,7 +113,7 @@ public class TaskListImpl extends TaskList{
      * the method update to take all the tasks from dateBase and sort it in the List
      */
     public void update(){
-        this.tasks = DataBaseControler.findAll() ;
+        this.tasks = Task_Data_Base_Method.findAll() ;
         sortByDate();
 
     }

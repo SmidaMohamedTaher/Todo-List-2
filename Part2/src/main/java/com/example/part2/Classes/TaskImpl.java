@@ -45,12 +45,13 @@ public class TaskImpl implements Task{
      * @param status
      * @param categories
      */
-    public TaskImpl(int id_T, String name, String description, Date dueDate,Complete status , ArrayList<Category> categories) {
+    public TaskImpl(int id_T, String name, String description, Date dueDate,Complete status ,Priorities prioritie, ArrayList<Category> categories) {
         this.id_T = id_T ;
         this.name = name;
         this.description = description;
         this.dueDate = dueDate ;
         this.status = status ;
+        this.prioritie = prioritie ;
         this.categories = categories ;
     }
 
@@ -150,7 +151,7 @@ public class TaskImpl implements Task{
         return this.status;
     }
 
-    public Priorities getPriorities() {
+    public Priorities getPrioritie() {
         return this.prioritie;
     }
 }

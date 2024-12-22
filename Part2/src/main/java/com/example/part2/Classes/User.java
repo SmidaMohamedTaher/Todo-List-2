@@ -16,4 +16,13 @@ public class User {
     public void setTaskList(TaskList taskList) {
         this.taskList = taskList;
     }
+
+    public String getUsername() {
+        return this.username;
+    }
+
+    public String getPassword() {
+        return this.password;
+    }
+
 }

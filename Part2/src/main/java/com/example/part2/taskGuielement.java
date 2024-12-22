@@ -3,7 +3,7 @@ package com.example.part2;
 
 import com.example.part2.Classes.Task;
 import com.example.part2.Classes.TaskListImpl;
-import com.example.part2.DataBases.DataBaseControler;
+import com.example.part2.DataBases.Task_Data_Base_Method;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -27,7 +27,7 @@ public class taskGuielement {
     @FXML
     Button deleteBu ;
 
-    TaskListImpl list = new TaskListImpl(DataBaseControler.findAll()) ;
+    TaskListImpl list = new TaskListImpl(Task_Data_Base_Method.findAll()) ;
 
 
 

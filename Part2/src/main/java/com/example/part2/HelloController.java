@@ -1,18 +1,15 @@
 package com.example.part2;
 
 import com.example.part2.Classes.*;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import org.controlsfx.control.Notifications;
-
 import java.io.IOException;
 import java.net.URL;
 import java.time.ZoneId;
@@ -42,7 +39,7 @@ public class HelloController implements Initializable {
 
     /*
         find the list catigory from databases
-        searchCatigory is woring , it must be not TextField 
+        searchCatigory is woring , it must be not TextField
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

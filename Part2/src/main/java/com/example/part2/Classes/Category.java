@@ -1,9 +1,16 @@
 package com.example.part2.Classes;
 
+import com.example.part2.DataBases.Category_Data_Base_methode;
+
 public class Category {
 
     private int idCategory;
     private final String categoryName;
+
+    public Category(String categoryName) {
+        this.categoryName = categoryName;
+        Category_Data_Base_methode.create(this);
+    }
 
     public Category(int idCategory, String categoryName) {
         this.idCategory = idCategory;
@@ -20,5 +27,14 @@ public class Category {
 
     public void setIdCategory(int idCategory) {
         this.idCategory = idCategory;
+    }
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "id=" + this.idCategory +
+                ", category='" + this.categoryName
+                + '\'' +
+                '}';
     }
 }
