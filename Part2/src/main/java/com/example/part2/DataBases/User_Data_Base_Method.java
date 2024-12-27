@@ -1,7 +1,5 @@
 package com.example.part2.DataBases;
 
-
-
 import com.example.part2.Classes.User;
 
 import java.sql.Connection;
@@ -96,3 +94,7 @@ public class User_Data_Base_Method {
 
 
 }
+
+
+
+

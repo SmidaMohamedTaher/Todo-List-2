@@ -9,7 +9,6 @@ public class Category {
 
     public Category(String categoryName) {
         this.categoryName = categoryName;
-        Category_Data_Base_methode.create(this);
     }
 
     public Category(int idCategory, String categoryName) {

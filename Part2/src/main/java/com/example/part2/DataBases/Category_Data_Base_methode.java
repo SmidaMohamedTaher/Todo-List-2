@@ -1,6 +1,5 @@
 package com.example.part2.DataBases;
 
-
 import com.example.part2.Classes.Category;
 
 import java.sql.Connection;
@@ -8,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
 
 public class Category_Data_Base_methode {
 
@@ -46,7 +46,6 @@ public class Category_Data_Base_methode {
         return categories;
     }
 
-
     public static void create(Category category) {
 
         Connection con = DBConnection.getConnection();
@@ -68,7 +67,6 @@ public class Category_Data_Base_methode {
             }
         }
     }
-
 
     public static void deleteById(int id) {
 

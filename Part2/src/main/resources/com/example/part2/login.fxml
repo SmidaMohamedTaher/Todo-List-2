@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.net.URL?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #151515;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.part2.LoginController">
+    <stylesheets>
+        <URL value="@mainui1.css" />
+    </stylesheets>
+    <children>
+        <VBox alignment="CENTER" layoutX="3.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="594.0" prefWidth="400.0" style="-fx-background-color: #c2562e; -fx-background-radius: 1em;" styleClass="mainFxmlClass">
+            <children>
+                <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@login.png" />
+               </image>
+                </ImageView>
+                <Label text="Welcome To" textFill="#151515">
+                    <font>
+                        <Font name="SansSerif Bold" size="20.0" />
+                    </font>
+                </Label>
+                <Label text="Task Manager" textFill="#151515">
+                    <font>
+                        <Font name="SansSerif Italic" size="16.0" />
+                    </font>
+                </Label>
+            </children>
+        </VBox>
+        <Pane fx:id="content_area" layoutX="400.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" stylesheets="@mainui1.css">
+            <children>
+                <ImageView fitHeight="112.0" fitWidth="112.0" layoutX="15.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@login.png" />
+               </image>
+                </ImageView>
+                <Label layoutX="21.0" layoutY="147.0" prefHeight="33.0" prefWidth="211.0" text="Welcome Back" textFill="#c2562e">
+                    <font>
+                        <Font name="SansSerif Bold" size="29.0" />
+                    </font>
+                </Label>
+                <Label layoutX="21.0" layoutY="178.0" text="Sign in to Continue" textFill="#909090">
+                    <font>
+                        <Font name="SansSerif Regular" size="16.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="usernameLabel" blendMode="OVERLAY" cache="true" layoutX="56.0" layoutY="263.0" prefHeight="51.0" prefWidth="269.0" promptText="User Name">
+                    <font>
+                        <Font name="SansSerif Regular" size="18.0" />
+                    </font>
+                </TextField>
+                <TextField fx:id="passwordLabel" blendMode="OVERLAY" layoutX="56.0" layoutY="345.0" prefHeight="51.0" prefWidth="269.0" promptText="Password">
+                    <font>
+                        <Font name="SansSerif Regular" size="18.0" />
+                    </font>
+                </TextField>
+                <JFXButton buttonType="RAISED" layoutX="57.0" layoutY="431.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#logIn" prefHeight="50.0" prefWidth="269.0" ripplerFill="#c2562e" styleClass="Loginbtn" stylesheets="@mainui1.css" text="Login">
+                    <font>
+                        <Font name="SansSerif Regular" size="15.0" />
+                    </font>
+                </JFXButton>
+                <Label layoutX="126.0" layoutY="509.0" text="New User ?" textFill="#505050">
+                    <font>
+                        <Font name="SansSerif Regular" size="15.0" />
+                    </font>
+                </Label>
+                <Label layoutX="209.0" layoutY="509.0" onMouseClicked="#SignUp" text="Signup" textFill="#c2562e">
+                    <font>
+                        <Font name="SansSerif Regular" size="15.0" />
+                    </font>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Label>
+</children>
+        </Pane>
+    </children>
+</AnchorPane>

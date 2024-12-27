@@ -1,6 +1,8 @@
 package com.example.part2;
 
+import com.almasb.fxgl.app.SystemActions;
 import com.example.part2.Classes.*;
+import com.example.part2.notifications.SystemNotifecation;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -14,7 +16,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 import java.util.ResourceBundle;
 
 public class HelloController implements Initializable {
@@ -71,7 +73,7 @@ public class HelloController implements Initializable {
     @FXML
     protected void addTask() throws IOException {
         if (taskName != null && taskDescription != null)
-            List.addTask(new TaskImpl(taskName.getText(), taskDescription.getText(), Date.from(taskDate.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant())));
+            List.addTask(new TaskImpl(taskName.getText(), taskDescription.getText(), (Date) Date.from(taskDate.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant())));
 
         ListOfTaskes.getChildren().clear();
         displayAllTasks(List.displayTasks());
@@ -80,18 +82,7 @@ public class HelloController implements Initializable {
         sherchWord.clear();
         taskDate.setValue(null);
 
-        Image image = new Image("file:src/main/resources/com/example/part2/download.jpeg") ;
-
-        ImageView imageView = new ImageView(image);
-        imageView.setFitWidth(30); // ضبط عرض الصورة
-        imageView.setFitHeight(30); // ضبط ارتفاع الصورة
-        imageView.setPreserveRatio(true);
-
-        Notifications.create()
-                .title("Notification")
-                .text("you add a new Task")
-                .graphic(imageView)
-                .show();
+        SystemNotifecation.AddNotifacition();
 
     }
 

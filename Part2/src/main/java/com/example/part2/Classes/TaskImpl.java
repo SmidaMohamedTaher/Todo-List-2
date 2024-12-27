@@ -1,8 +1,8 @@
 package com.example.part2.Classes;
 
-import java.time.LocalDate;
+
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date ;
 
 public class TaskImpl implements Task{
     private int id_T ;
@@ -13,46 +13,21 @@ public class TaskImpl implements Task{
     private Priorities prioritie ;
     private ArrayList<Category> categories ;
 
+
+
+
     /**
-     * Create a new Task not exist
+     * Create new object of task exit in DateBase
+     *
      * @param name
      * @param description
      * @param dueDate
      */
     public TaskImpl(String name, String description, Date dueDate) {
-
         this.name = name;
         this.description = description;
         this.dueDate = dueDate ;
-        this.status = Complete.not_complated ;
 
-    }
-
-    public TaskImpl(int id_T,String name, String description, Date dueDate, Complete status) {
-        this.id_T = id_T ;
-        this.name = name;
-        this.description = description;
-        this.dueDate = dueDate ;
-        this.status = status;
-    }
-
-    /**
-     * Create new object of task exit in DateBase
-     * @param id_T
-     * @param name
-     * @param description
-     * @param dueDate
-     * @param status
-     * @param categories
-     */
-    public TaskImpl(int id_T, String name, String description, Date dueDate,Complete status ,Priorities prioritie, ArrayList<Category> categories) {
-        this.id_T = id_T ;
-        this.name = name;
-        this.description = description;
-        this.dueDate = dueDate ;
-        this.status = status ;
-        this.prioritie = prioritie ;
-        this.categories = categories ;
     }
 
     /**
@@ -73,6 +48,7 @@ public class TaskImpl implements Task{
         this.status = status ;
         this.prioritie = prioritie ;
     }
+
 
     /**
      * this method if we need edit a task ( name or discription or due date )
@@ -135,7 +111,7 @@ public class TaskImpl implements Task{
         return this.id_T;
     }
 
-    public Date getDueDate() {
+    public java.sql.Date getDueDate() {
         return this.dueDate;
     }
 
@@ -151,7 +127,11 @@ public class TaskImpl implements Task{
         return this.status;
     }
 
-    public Priorities getPrioritie() {
+    public Priorities getPriority() {
         return this.prioritie;
+    }
+
+    public void setCategories(ArrayList<Category> categories){
+        this.categories = categories ;
     }
 }

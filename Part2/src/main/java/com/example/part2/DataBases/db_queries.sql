@@ -19,9 +19,21 @@ CREATE TABLE task (
                       description VARCHAR(1000),
                       dueDate DATE,
                       status ENUM('completed', 'not_completed', 'abandoned') NOT NULL,
-                      priority ENUM('low', 'medium', 'high') NOT NULL,
-                      user_id INT,
-                      category_id INT,
-                      FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE ON UPDATE CASCADE,
-                      FOREIGN KEY (category_id) REFERENCES category(id) ON DELETE SET NULL ON UPDATE CASCADE
+                      priority ENUM('low', 'medium', 'high') NOT NULL
+);
+
+CREATE TABLE task_user (
+                           task_id INT NOT NULL,
+                           user_id INT NOT NULL,
+                           PRIMARY KEY (task_id, user_id),
+                           FOREIGN KEY (task_id) REFERENCES task(id) ON DELETE CASCADE ON UPDATE CASCADE,
+                           FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE task_category (
+                               task_id INT NOT NULL,
+                               category_id INT NOT NULL,
+                               PRIMARY KEY (task_id, category_id),
+                               FOREIGN KEY (task_id) REFERENCES task(id) ON DELETE CASCADE ON UPDATE CASCADE,
+                               FOREIGN KEY (category_id) REFERENCES category(id) ON DELETE CASCADE ON UPDATE CASCADE
 );

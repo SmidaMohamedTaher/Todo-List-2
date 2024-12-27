@@ -1,6 +1,7 @@
 package com.example.part2.Classes;
 
-import java.util.Date;
+import java.util.ArrayList;
+import java.sql.Date;
 
 public interface Task {
 
@@ -74,7 +75,7 @@ public interface Task {
      *
      * @return
      */
-    public Priorities getPrioritie();
+    public Priorities getPriority();
 
     /**
      * this function to chick if the task Belongs to the Catigory
@@ -83,6 +84,8 @@ public interface Task {
      * @return
      */
     public boolean isMyCategory(Category category);
+
+    public void setCategories(ArrayList<Category> categories) ;
 }
 
 
