@@ -10,8 +10,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static jdk.xml.internal.SecuritySupport.getResource;
-
 
 public class LoginController {
 
@@ -37,9 +35,10 @@ public class LoginController {
                 stage.setTitle("Todo List ");
                 stage.setScene(scene);
                 stage.show();
+
+                return ;
             }
 
-            return ;
         }
         // errer
         // errer
@@ -50,7 +49,7 @@ public class LoginController {
 
         usernameLabel.getScene().getWindow().hide();
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getResource("sigin.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("sigin.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Stage stage = new Stage();
         stage.setTitle("Todo List ");

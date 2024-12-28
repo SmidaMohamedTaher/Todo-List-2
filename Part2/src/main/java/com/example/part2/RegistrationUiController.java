@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-import static jdk.xml.internal.SecuritySupport.getResource;
+
 
 public class RegistrationUiController {
 
@@ -22,14 +22,16 @@ public class RegistrationUiController {
     private TextField password2;
 
     @FXML
-    protected void registerUser(){
+    protected void registerUser() throws IOException {
 
-        if(usernameText.getText().equals("") || passwordText.getText().equals("") || password2.getText().equals("")){}
-        if (passwordText.equals(password2)) {
+        if(!usernameText.getText().equals("") && !passwordText.getText().equals("") && !password2.getText().equals(""))
+        if (passwordText.getText().equals(password2.getText())) {
 
             User user = new User(usernameText.getText(),passwordText.getText()) ;
             User_Data_Base_Method.create(user);
+            System.out.println("User created");
 
+            loginUser() ;
         }
     }
 
@@ -37,7 +39,7 @@ public class RegistrationUiController {
     protected void loginUser() throws IOException {
         usernameText.getScene().getWindow().hide();
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getResource("login.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Stage stage = new Stage();
         stage.setTitle("Todo List ");

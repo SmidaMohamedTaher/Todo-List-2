@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -9,25 +9,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" styleClass="par" stylesheets="@mainui1.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.part2.RegistrationUiController">
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #171717;" stylesheets="@mainui.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.part2.RegistrationUiController">
     <children>
-        <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="25.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="35.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@login.png" />
             </image>
         </ImageView>
-        <Label layoutX="24.0" layoutY="143.0" prefHeight="31.0" prefWidth="229.0" text="Registartion Form" textFill="#c2562e">
+        <Label layoutX="34.0" layoutY="153.0" prefHeight="31.0" prefWidth="229.0" text="Registartion Form" textFill="#c2562e">
             <font>
                 <Font name="SansSerif Bold" size="26.0" />
             </font>
         </Label>
-<!--        <FontAwesomeIcon fill="WHITE" glyphName="CLOSE" layoutX="371.0" layoutY="29.0" onMouseClicked="#close_app" selectionStart="1" size="1.5em" styleClass="closeBtn" />-->
-        <Label layoutX="25.0" layoutY="181.0" text="Already have an account?" textFill="#545454">
+        <Label layoutX="35.0" layoutY="191.0" text="Already have an account?" textFill="#505050">
             <font>
                 <Font name="SansSerif Regular" size="15.0" />
             </font>
         </Label>
-        <Label layoutX="202.0" layoutY="181.0" onDragDetected="#loginUser" text="Login" textFill="#c2562e">
+        <Label layoutX="212.0" layoutY="191.0" onMouseClicked="#loginUser" text="Login" textFill="#c2562e">
             <font>
                 <Font name="SansSerif Regular" size="15.0" />
             </font>
@@ -35,30 +34,33 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </Label>
-        <TextField fx:id="usernameText" blendMode="OVERLAY" cache="true" layoutX="65.0" layoutY="227.0" prefHeight="51.0" prefWidth="269.0" promptText="Entre User Name">
+        <TextField fx:id="usernameText" blendMode="OVERLAY" cache="true" layoutX="75.0" layoutY="237.0" prefHeight="51.0" prefWidth="269.0" promptText="Entre User Name">
             <font>
                 <Font name="SansSerif Regular" size="18.0" />
             </font>
         </TextField>
-        <TextField blendMode="OVERLAY" layoutX="65.0" layoutY="286.0" prefHeight="51.0" prefWidth="269.0" promptText="Email">
+        <TextField blendMode="OVERLAY" layoutX="75.0" layoutY="296.0" prefHeight="51.0" prefWidth="269.0" promptText="Email">
             <font>
                 <Font name="SansSerif Regular" size="18.0" />
             </font>
         </TextField>
-        <TextField fx:id="passwordText" blendMode="OVERLAY" layoutX="65.0" layoutY="345.0" prefHeight="51.0" prefWidth="269.0" promptText="Password">
+        <TextField fx:id="passwordText" blendMode="OVERLAY" layoutX="75.0" layoutY="355.0" prefHeight="51.0" prefWidth="269.0" promptText="Password">
             <font>
                 <Font name="SansSerif Regular" size="18.0" />
             </font>
         </TextField>
-        <TextField fx:id="Text2" blendMode="OVERLAY" layoutX="65.0" layoutY="405.0" prefHeight="51.0" prefWidth="269.0" promptText="Confirme Password">
+        <TextField fx:id="password2" blendMode="OVERLAY" layoutX="75.0" layoutY="415.0" prefHeight="51.0" prefWidth="269.0" promptText="Confirme Password">
             <font>
                 <Font name="SansSerif Regular" size="18.0" />
             </font>
         </TextField>
-        <JFXButton buttonType="RAISED" layoutX="65.0" layoutY="481.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#registerUser" prefHeight="50.0" prefWidth="269.0" ripplerFill="#c2562e" styleClass="Loginbtn" stylesheets="@mainui1.css" text="Register">
+        <Button layoutX="75.0" layoutY="491.0" mnemonicParsing="false" onAction="#registerUser" prefHeight="50.0" prefWidth="269.0" styleClass="Loginbtn" stylesheets="@mainui1.css" text="Register">
             <font>
                 <Font name="SansSerif Regular" size="15.0" />
             </font>
-        </JFXButton>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </Button>
     </children>
 </AnchorPane>

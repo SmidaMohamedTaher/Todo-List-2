@@ -1,0 +1,75 @@
+
+.search-button{
+    -fx-background-color: #c2562e;
+    -fx-background-radius: 30;
+}
+
+.TaskName-box{
+
+    -fx-background-color: #505050;
+    -fx-background-radius: 100;
+}
+.save-button{
+    -fx-background-color: #c2562e;
+    -fx-background-radius: 30;
+}
+.create-task-bar{
+    -fx-background-color: #c2562e;
+    -fx-background-radius: 30;
+}
+.complited-button{
+    -fx-background-color:  #c2562e;
+    -fx-text-fill: #FFF;
+    -fx-background-radius:30;
+}
+.complited-button:hover{
+    -fx-background-color:  transparent;
+    -fx-text-fill: #c2562e;
+    -fx-border-color: #c2562e;
+    -fx-border-width: 1px;
+    -fx-border-style: solid;
+    -fx-background-radius:30;
+}
+.not-complited-button{
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 30;
+}
+.Abandoned-button{
+    -fx-background-color: #FF2929;
+    -fx-background-radius: 30;
+}
+.Delete-button{
+    -fx-background-color:  #FF2929;
+    -fx-text-fill: #FFF;
+    -fx-background-radius:30;
+}
+.Delete-button:hover{
+    -fx-background-color:  transparent;
+    -fx-text-fill: #FF2929;
+    -fx-border-color: #FF2929;
+    -fx-border-width: 1px;
+    -fx-border-style: solid;
+    -fx-background-radius:30;
+}
+.refrech-button{
+    -fx-background-color: #c2562e;
+    -fx-background-radius: 30;
+}
+
+.MenuBtn{
+    -fx-background-color:  #303030;
+    -fx-text-fill: #FFF;
+    -fx-background-radius:30;
+}
+.MenuBtn:hover{
+    -fx-background-color:  #c2562e;
+    -fx-text-fill: #FFF;
+    -fx-border-color: transparent;
+    -fx-border-width: 1px;
+    -fx-border-style: solid;
+    -fx-background-radius:30;
+
+}
+.right-bar{
+    -fx-background-color: #171717;
+}
