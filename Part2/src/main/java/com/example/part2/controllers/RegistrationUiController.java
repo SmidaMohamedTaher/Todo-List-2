@@ -1,7 +1,8 @@
-package com.example.part2;
+package com.example.part2.controllers;
 
 import com.example.part2.Classes.User;
 import com.example.part2.DataBases.User_Data_Base_Method;
+import com.example.part2.HelloApplication;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

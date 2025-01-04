@@ -11,7 +11,10 @@ module com.example.part2 {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
     requires java.sql;
+    requires java.desktop;
 
     opens com.example.part2 to javafx.fxml;
     exports com.example.part2;
+    exports com.example.part2.controllers;
+    opens com.example.part2.controllers to javafx.fxml;
 }

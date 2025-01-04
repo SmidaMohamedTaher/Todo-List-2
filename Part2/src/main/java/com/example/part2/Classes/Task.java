@@ -1,7 +1,7 @@
 package com.example.part2.Classes;
 
 import java.util.ArrayList;
-import java.sql.Date;
+import java.util.Date;
 
 public interface Task {
 
@@ -86,6 +86,14 @@ public interface Task {
     public boolean isMyCategory(Category category);
 
     public void setCategories(ArrayList<Category> categories) ;
+
+    public boolean equal(Task task);
+
+    public void setName(String name) ;
+    public void setDescription(String description) ;
+    public void addCategorie(Category category) ;
+    public void setDueDate(Date date);
+
 }
 
 

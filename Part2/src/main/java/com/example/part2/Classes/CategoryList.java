@@ -14,6 +14,10 @@ public class CategoryList {
         this.categories = categories;
     }
 
+    public ArrayList<Category> getCategories() {
+        return categories ;
+    }
+
     public Category findTheCatigory(String catigory){
         for (Category cat : categories) {
             if (cat.getCategoryName().equals(catigory)) {

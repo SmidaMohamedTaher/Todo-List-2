@@ -2,7 +2,7 @@ package com.example.part2.Classes;
 
 
 import java.util.ArrayList;
-import java.sql.Date ;
+import java.util.Date;
 
 public class TaskImpl implements Task{
     private int id_T ;
@@ -14,20 +14,14 @@ public class TaskImpl implements Task{
     private ArrayList<Category> categories ;
 
 
+    public TaskImpl( String name, String description, Date dueDate,Priorities prioritie) {
 
-
-    /**
-     * Create new object of task exit in DateBase
-     *
-     * @param name
-     * @param description
-     * @param dueDate
-     */
-    public TaskImpl(String name, String description, Date dueDate) {
         this.name = name;
         this.description = description;
         this.dueDate = dueDate ;
-
+        this.prioritie = prioritie ;
+        this.status = Complete.not_completed ;
+        this.categories = new ArrayList<>();
     }
 
     /**
@@ -47,7 +41,10 @@ public class TaskImpl implements Task{
         this.dueDate = dueDate ;
         this.status = status ;
         this.prioritie = prioritie ;
+        this.categories = new ArrayList<>() ;
     }
+
+
 
 
     /**
@@ -66,7 +63,7 @@ public class TaskImpl implements Task{
      * this is impl of method mark As Completed
      */
     public void markAsCompleted(){
-        this.status = Complete.complated ;
+        this.status = Complete.completed ;
     }
 
     /**
@@ -88,7 +85,7 @@ public class TaskImpl implements Task{
      * this is impl of method mark As not Completed
      */
     public void markAsNotComplated(){
-        this.status = Complete.not_complated ;
+        this.status = Complete.not_completed ;
     }
 
     /**
@@ -107,11 +104,15 @@ public class TaskImpl implements Task{
         return false;
     }
 
+    public boolean equal(Task task){
+        return (this.name.equals(task.getName()) && this.description.equals(task.getDescription()) && (this.dueDate.getDay() == task.getDueDate().getDay() && this.dueDate.getMonth() == task.getDueDate().getMonth() && this.dueDate.getYear() == task.getDueDate().getYear()) && this.status.equals(task.getStatus()) && this.prioritie == task.getPriority());
+    }
+
     public int getId_T() {
         return this.id_T;
     }
 
-    public java.sql.Date getDueDate() {
+    public Date getDueDate() {
         return this.dueDate;
     }
 
@@ -133,5 +134,24 @@ public class TaskImpl implements Task{
 
     public void setCategories(ArrayList<Category> categories){
         this.categories = categories ;
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public void addCategorie(Category category){
+        this.categories.add(category);
+    }
+
+    public void setDescription(String description){
+        this.description = description;
+    }
+
+    public void setDueDate(Date dueDate){
+        this.dueDate = dueDate;
+    }
+    public void setPriorities(Priorities priorities){
+        this.prioritie = priorities ;
     }
 }

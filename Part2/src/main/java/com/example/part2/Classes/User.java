@@ -30,4 +30,8 @@ public class User {
         return this.password;
     }
 
+    public int getIdUser() {
+        return this.idUser;
+    }
+
 }

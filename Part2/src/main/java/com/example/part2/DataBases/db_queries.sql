@@ -18,7 +18,7 @@ CREATE TABLE task (
                       name VARCHAR(30) NOT NULL,
                       description VARCHAR(1000),
                       dueDate DATE,
-                      status ENUM('completed', 'not_completed', 'abandoned') NOT NULL,
+                      status ENUM('completed', 'not_complated', 'abandoned') NOT NULL,
                       priority ENUM('low', 'medium', 'high') NOT NULL
 );
 

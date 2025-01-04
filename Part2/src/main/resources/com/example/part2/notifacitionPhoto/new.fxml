@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #171717;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.part2.New">
+   <children>
+      <DatePicker blendMode="OVERLAY" layoutX="44.0" layoutY="186.0" />
+      <TextField blendMode="OVERLAY" layoutX="45.0" layoutY="104.0" prefHeight="25.0" prefWidth="167.0" />
+      <Label alignment="CENTER" layoutX="48.0" layoutY="147.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="167.0" text="Due Date" textFill="WHITE">
+         <font>
+            <Font name="SansSerif Regular" size="15.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="41.0" layoutY="64.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="167.0" text="Task Name" textFill="WHITE">
+         <font>
+            <Font name="SansSerif Regular" size="15.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="238.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="167.0" text="Create or Edit Task :" textFill="#c2562e">
+         <font>
+            <Font name="SansSerif Bold" size="15.0" />
+         </font>
+      </Label>
+      <ChoiceBox blendMode="OVERLAY" layoutX="238.0" layoutY="104.0" prefWidth="150.0" />
+      <Label alignment="CENTER" layoutX="229.0" layoutY="64.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="167.0" text="Categories" textFill="WHITE">
+         <font>
+            <Font name="SansSerif Regular" size="15.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="229.0" layoutY="147.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="167.0" text="Task Prioritie" textFill="WHITE">
+         <font>
+            <Font name="SansSerif Regular" size="15.0" />
+         </font>
+      </Label>
+      <ChoiceBox blendMode="OVERLAY" layoutX="238.0" layoutY="186.0" prefWidth="150.0" />
+      <Label alignment="CENTER" layoutX="229.0" layoutY="223.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="167.0" text="Task Prioritie" textFill="WHITE">
+         <font>
+            <Font name="SansSerif Regular" size="15.0" />
+         </font>
+      </Label>
+      <ChoiceBox blendMode="OVERLAY" layoutX="238.0" layoutY="258.0" prefWidth="150.0" />
+      <Label alignment="CENTER" layoutX="392.0" layoutY="64.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="167.0" text="Add Categorie" textFill="WHITE">
+         <font>
+            <Font name="SansSerif Regular" size="15.0" />
+         </font>
+      </Label>
+      <TextField blendMode="OVERLAY" layoutX="412.0" layoutY="104.0" />
+      <Label alignment="CENTER" layoutX="403.0" layoutY="147.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="167.0" text="Description" textFill="WHITE">
+         <font>
+            <Font name="SansSerif Regular" size="15.0" />
+         </font>
+      </Label>
+      <TextArea blendMode="OVERLAY" layoutX="412.0" layoutY="175.0" prefHeight="109.0" prefWidth="158.0" />
+   </children>
+</AnchorPane>

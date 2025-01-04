@@ -3,10 +3,7 @@ package com.example.part2.DataBases;
 import com.example.part2.Classes.*;
 import javafx.scene.layout.Priority;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -26,7 +23,7 @@ public class Task_Data_Base_Method {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 Task task = new TaskImpl(
-                        resultSet.getInt("id_T"),
+                        resultSet.getInt("id"),
                         resultSet.getString("name"),
                         resultSet.getString("description"),
                         resultSet.getDate("dueDate"),
@@ -52,6 +49,109 @@ public class Task_Data_Base_Method {
         return tasks;
     }
 
+    public static void create(Task task, int userId,Category category) {
+
+        Connection con = DBConnection.getConnection();
+        if (con == null) {
+            return;
+        }
+
+        String query = "INSERT INTO task(name, description, dueDate, status, priority) VALUES(?, ?, ?, ?, ?);";
+
+        try (PreparedStatement preparedStatement = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
+            preparedStatement.setString(1, task.getName());
+            preparedStatement.setString(2, task.getDescription());
+            preparedStatement.setDate(3, Utils.getSqlDate(task.getDueDate()));
+            preparedStatement.setString(4, task.getStatus().toString());
+            preparedStatement.setString(5, task.getPriority().toString());
+
+            preparedStatement.executeUpdate();
+
+            try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    int taskId = generatedKeys.getInt(1);
+                    addCategoryToTask(taskId,category.getIdCategory());
+                    String taskUserQuery = "INSERT INTO task_user(task_id, user_id) VALUES(?, ?)";
+                    try (PreparedStatement taskUserStatement = con.prepareStatement(taskUserQuery)) {
+                        taskUserStatement.setInt(1, taskId);
+                        taskUserStatement.setInt(2, userId);
+
+                        taskUserStatement.executeUpdate();
+                    }
+                }
+            }
+        } catch (SQLException se) {
+            se.printStackTrace();
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException se) {
+                se.printStackTrace();
+            }
+        }
+    }
+
+    public static void create(Task task, int userId) {
+        Connection con = DBConnection.getConnection();
+        if (con == null) {
+            System.out.println("Database connection error.");
+            return;
+        }
+
+        String taskQuery = "INSERT INTO task(name, description, dueDate, status, priority) VALUES(?, ?, ?, ?, ?);";
+        String taskUserQuery = "INSERT INTO task_user(task_id, user_id) VALUES(?, ?);";
+
+        try {
+            con.setAutoCommit(false);
+
+            try (PreparedStatement preparedStatement = con.prepareStatement(taskQuery, Statement.RETURN_GENERATED_KEYS)) {
+                preparedStatement.setString(1, task.getName());
+                preparedStatement.setString(2, task.getDescription());
+                preparedStatement.setDate(3, new java.sql.Date(task.getDueDate().getTime()));
+                preparedStatement.setString(4, task.getStatus().name());
+                preparedStatement.setString(5, task.getPriority().toString());
+
+                int rowsAffected = preparedStatement.executeUpdate();
+                if (rowsAffected == 0) {
+                    throw new SQLException("Creating task failed, no rows affected.");
+                }
+
+                try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
+                    if (generatedKeys.next()) {
+                        int taskId = generatedKeys.getInt(1);
+
+                        try (PreparedStatement taskUserStatement = con.prepareStatement(taskUserQuery)) {
+                            taskUserStatement.setInt(1, taskId);
+                            taskUserStatement.setInt(2, userId);
+                            taskUserStatement.executeUpdate();
+                        }
+                    } else {
+                        throw new SQLException("Creating task failed, no ID obtained.");
+                    }
+                }
+            }
+
+            con.commit();
+        } catch (SQLException se) {
+            try {
+                if (con != null) {
+                    con.rollback();
+                }
+            } catch (SQLException rollbackEx) {
+                rollbackEx.printStackTrace();
+            }
+            se.printStackTrace();
+        } finally {
+            try {
+                if (con != null) {
+                    con.setAutoCommit(true);
+                    con.close();
+                }
+            } catch (SQLException se) {
+                se.printStackTrace();
+            }
+        }
+    }
 
     public static ArrayList<Category> findTaskCategories(int taskId) {
         Connection con = DBConnection.getConnection();
@@ -94,14 +194,14 @@ public class Task_Data_Base_Method {
             return null;
         }
 
-        String query = "SELECT * FROM task WHERE id_T = ?;";
+        String query = "SELECT * FROM task WHERE id = ?;";
         try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
 
                 Task task = new TaskImpl(
-                        resultSet.getInt("id_T"),
+                        resultSet.getInt("id"),
                         resultSet.getString("name"),
                         resultSet.getString("description"),
                         resultSet.getDate("dueDate"),
@@ -159,7 +259,7 @@ public class Task_Data_Base_Method {
             return;
         }
 
-        String query = "UPDATE task SET name = ?, description = ?, dueDate = ?, status = ?, priority = ? WHERE id_T = ?;";
+        String query = "UPDATE task SET name = ?, description = ?, dueDate = ?, status = ?, priority = ? WHERE id = ?;";
         try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
             preparedStatement.setString(1, task.getName());
             preparedStatement.setString(2, task.getDescription());
@@ -179,33 +279,13 @@ public class Task_Data_Base_Method {
         }
     }
 
-    public static void deleteAll() {
-        Connection con = DBConnection.getConnection();
-        if (con == null) {
-            return;
-        }
-
-        String query = "DELETE FROM task;";
-        try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
-            preparedStatement.executeUpdate();
-        } catch (SQLException se) {
-            se.printStackTrace();
-        } finally {
-            try {
-                con.close();
-            } catch (SQLException se) {
-                se.printStackTrace();
-            }
-        }
-    }
-
     public static void deleteById(int id) {
         Connection con = DBConnection.getConnection();
         if (con == null) {
             return;
         }
 
-        String query = "DELETE FROM task WHERE id_T = ?;";
+        String query = "DELETE FROM task WHERE id = ?;";
         try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
@@ -220,19 +300,24 @@ public class Task_Data_Base_Method {
         }
     }
 
+
+    // Smida taher
     public static ArrayList<Task> findTasksByUserId(int userId) {
+
+
 
         Connection con = DBConnection.getConnection();
         if (con == null) {
             return null;
         }
 
-        ArrayList<Task> tasks = new ArrayList<>();
+        ArrayList<Task> tasks = new ArrayList<Task>();
+        ArrayList<Integer> ids = new ArrayList<Integer>() ;
 
 
-        String query = "SELECT t.id_T, t.name, t.description, t.dueDate, t.status, t.priority " +
-                "FROM task t " +
-                "WHERE t.user_id = ?;";
+        String query = "SELECT * " +
+                "FROM task_user " +
+                "WHERE user_id = ?;";
 
         try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
             preparedStatement.setInt(1, userId);
@@ -241,20 +326,8 @@ public class Task_Data_Base_Method {
 
             while (resultSet.next()) {
 
-                Task task = new TaskImpl(
-                        resultSet.getInt("id_T"),
-                        resultSet.getString("name"),
-                        resultSet.getString("description"),
-                        resultSet.getDate("dueDate"),
-                        Complete.valueOf(resultSet.getString("status")),
-                        Priorities.valueOf(resultSet.getString("priority"))
-                );
-
-
-                ArrayList<Category> categories = findTaskCategories(task.getId_T());
-                task.setCategories(categories);
-
-                tasks.add(task);
+                Integer id = resultSet.getInt("task_id");
+                ids.add(id);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -266,8 +339,16 @@ public class Task_Data_Base_Method {
             }
         }
 
+        for (int id : ids) {
+
+            tasks.add(findById(id)) ;
+        }
+
+
         return tasks;
+
     }
+
 
     public static boolean addUserToTask(int taskId, int userId) {
         Connection con = DBConnection.getConnection();

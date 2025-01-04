@@ -1,22 +1,25 @@
-package com.example.part2;
+package com.example.part2.controllers;
 
-import com.almasb.fxgl.app.SystemActions;
 import com.example.part2.Classes.*;
+import com.example.part2.DataBases.Category_Data_Base_methode;
+import com.example.part2.DataBases.Task_Data_Base_Method;
+import com.example.part2.HelloApplication;
 import com.example.part2.notifications.SystemNotifecation;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import org.controlsfx.control.Notifications;
+import javafx.stage.Stage;
+import org.controlsfx.control.PropertySheet;
+
 import java.io.IOException;
 import java.net.URL;
 import java.time.ZoneId;
 import java.util.ArrayList;
-import java.sql.Date;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class HelloController implements Initializable {
@@ -33,11 +36,21 @@ public class HelloController implements Initializable {
     private TextField searchCatigory ;
     @FXML
     private DatePicker taskDate ;
+    @FXML
+    private Label user_name ;
+    @FXML
+    private ChoiceBox catigoriesChice ;
+
     Label i = new Label() ;
 
-    TaskList List = new TaskListImpl() ;
-    CategoryList catList = new CategoryList() ;
+    User user ;
 
+    public HelloController(User user) {
+        this.user = user;
+    }
+
+    TaskList List;
+    CategoryList catList ;
 
     /*
         find the list catigory from databases
@@ -45,7 +58,17 @@ public class HelloController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        user_name.setText(user.getUsername());
+        List = new TaskListImpl(Task_Data_Base_Method.findTasksByUserId(user.getIdUser()), user.getIdUser());
+        catList = new CategoryList(Category_Data_Base_methode.findAll()) ;
+
+        for(Category cate :catList.getCategories()){
+            catigoriesChice.getItems().add(cate.getCategoryName()) ;
+        }
+
         ListOfTaskes.getChildren().clear();
+
         try {
             displayAllTasks(List.displayTasks());
         } catch (IOException e) {
@@ -65,44 +88,43 @@ public class HelloController implements Initializable {
         }
 
         refresh();
-
-
-
     }
 
-    @FXML
-    protected void addTask() throws IOException {
-        if (taskName != null && taskDescription != null)
-            List.addTask(new TaskImpl(taskName.getText(), taskDescription.getText(), (Date) Date.from(taskDate.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant())));
-
-        ListOfTaskes.getChildren().clear();
-        displayAllTasks(List.displayTasks());
-        taskName.clear();
-        taskDescription.clear();
-        sherchWord.clear();
-        taskDate.setValue(null);
-
-        SystemNotifecation.AddNotifacition();
-
-    }
+//    @FXML
+//    protected void addTask() throws IOException {
+//        if (taskName != null && taskDescription != null)
+//            List.addTask(new TaskImpl(taskName.getText(), taskDescription.getText(), (Date) Date.from(taskDate.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant())));
+//
+//        ListOfTaskes.getChildren().clear();
+//        displayAllTasks(List.displayTasks());
+//        taskName.clear();
+//        taskDescription.clear();
+//        sherchWord.clear();
+//        taskDate.setValue(null);
+//
+//        SystemNotifecation.AddNotifacition();
+//
+//    }
 
     /**
      * this methode well add HBox with task data to the List of Tasks in interface
      */
-    private void addHBox(String nameOfTask, String discriptionOfTask, Date dateOfTask, Complete status)  throws IOException {
+    private void addHBox(String nameOfTask, String discriptionOfTask, Date dateOfTask, Complete status,Priorities prioritie)  throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("taskCreation.fxml"));
         HBox t = fxmlLoader.load() ;
         Label taskNameLable =  (Label) t.getChildren().get(0) ;
         Label TaskDiscriptionLabel =  (Label) t.getChildren().get(1) ;
         Label TaskDateLable =  (Label) t.getChildren().get(2) ;
-        Button statusButtom =  (Button) t.getChildren().get(3) ;
-        Button deleteButtom = (Button) t.getChildren().get(4) ;
+        Label PriortieLable =  (Label) t.getChildren().get(3) ;
+        Button statusButtom =  (Button) t.getChildren().get(4) ;
+        Button deleteButtom = (Button) t.getChildren().get(5) ;
 
 
         taskNameLable.setText(nameOfTask) ;
         TaskDiscriptionLabel.setText(discriptionOfTask) ;
         TaskDateLable.setText(dateOfTask.toString()) ;
         statusButtom.setText(status.toString()) ;
+        PriortieLable.setText(prioritie.name());
 
         deleteButtom.setOnAction(event -> {
             try {
@@ -112,9 +134,9 @@ public class HelloController implements Initializable {
             }
         });
 
-        if (status == Complete.not_complated) {
+        if (status == Complete.not_completed) {
             statusButtom.getStyleClass().add("not-complited-button") ;
-        } else if (status == Complete.complated) {
+        } else if (status == Complete.completed) {
             statusButtom.getStyleClass().add("complated-button") ;
         }
         else {
@@ -126,6 +148,7 @@ public class HelloController implements Initializable {
         t.getChildren().add(taskNameLable) ;
         t.getChildren().add(TaskDiscriptionLabel) ;
         t.getChildren().add(TaskDateLable) ;
+        t.getChildren().add(PriortieLable) ;
         t.getChildren().add(statusButtom) ;
         t.getChildren().add(deleteButtom) ;
 
@@ -137,7 +160,7 @@ public class HelloController implements Initializable {
 
         ListOfTaskes.getChildren().clear();
         for (Task task : tasks){
-            addHBox(task.getName(),task.getDescription(),task.getDueDate(),task.getStatus());
+            addHBox(task.getName(),task.getDescription(),task.getDueDate(),task.getStatus(),task.getPriority());
         }
     }
 
@@ -159,8 +182,53 @@ public class HelloController implements Initializable {
     @FXML
     private void refresh() throws IOException{
         displayAllTasks(List.displayTasks());
+    }
 
+    @FXML
+    public void goToAdd() throws IOException {
+
+        ListOfTaskes.getScene().getWindow().hide();
+
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("create_Edit.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        CreateEditController cont = fxmlLoader.getController() ;
+        cont.setUser(user);
+        Stage stage = new Stage();
+        stage.setTitle("Todo List ");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    public void gotToSearch() throws IOException {
+
+        ListOfTaskes.getScene().getWindow().hide();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("search.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage = new Stage();
+        stage.setTitle("Todo List ");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    protected void goToEdit() throws IOException {
+
+        ListOfTaskes.getScene().getWindow().hide();
+
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("create_Edit.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        CreateEditController cont = fxmlLoader.getController() ;
+
+        // set the edit task here
+        cont.setUser(user);
+        Stage stage = new Stage();
+        stage.setTitle("Todo List ");
+        stage.setScene(scene);
+        stage.show();
 
     }
+
+
 
 }

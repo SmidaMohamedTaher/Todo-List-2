@@ -6,8 +6,8 @@ package com.example.part2.Classes;
  */
 
 public enum Complete {
-    complated ,
-    not_complated ,
+    completed ,
+    not_completed ,
     abandoned
 
 }

@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="617.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="617.0" style="-fx-background-color: #171717;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="com.example.part2.controllers.SearchController">
     <children>
         <HBox prefHeight="258.0" prefWidth="617.0">
             <children>
@@ -92,7 +92,7 @@
                         <Font name="SansSerif Bold" size="12.0" />
                     </font>
                 </Label>
-                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="54.0" prefWidth="151.0" text="Description" textFill="WHITE" HBox.hgrow="ALWAYS">
+                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="54.0" prefWidth="148.0" text="Description" textFill="WHITE" HBox.hgrow="ALWAYS">
                     <font>
                         <Font name="SansSerif Regular" size="12.0" />
                     </font>
@@ -107,6 +107,11 @@
                     <HBox.margin>
                         <Insets />
                     </HBox.margin>
+                </Label>
+                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="108.0" text="Prioritie" textFill="WHITE">
+                    <font>
+                        <Font name="SansSerif Regular" size="12.0" />
+                    </font>
                 </Label>
                 <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="146.0" text="Status" textFill="WHITE" HBox.hgrow="ALWAYS">
                     <font>
@@ -124,7 +129,7 @@
                     <children>
                         <HBox prefHeight="72.0" prefWidth="147.0">
                             <children>
-                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="82.0" prefWidth="127.0" text="Task1" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="46.0" prefWidth="107.0" text="Task1" textFill="WHITE" HBox.hgrow="ALWAYS">
                                     <font>
                                         <Font name="SansSerif Regular" size="15.0" />
                                     </font>
@@ -133,16 +138,25 @@
                         </HBox>
                         <HBox prefHeight="72.0" prefWidth="188.0">
                             <children>
-                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="91.0" prefWidth="168.0" text="Description1..." textFill="WHITE">
+                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="46.0" prefWidth="151.0" text="Description1..." textFill="WHITE">
                                     <font>
                                         <Font name="SansSerif Regular" size="15.0" />
                                     </font>
                                 </Label>
                             </children>
                         </HBox>
-                        <HBox prefHeight="64.0" prefWidth="242.0">
+                        <HBox prefHeight="46.0" prefWidth="166.0">
                             <children>
                                 <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="64.0" prefWidth="322.0" text="dd/mm/yyyy" textFill="WHITE">
+                                    <font>
+                                        <Font name="SansSerif Regular" size="15.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </HBox>
+                        <HBox prefHeight="72.0" prefWidth="147.0">
+                            <children>
+                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="82.0" prefWidth="127.0" text="L/M/H" textFill="WHITE" HBox.hgrow="ALWAYS">
                                     <font>
                                         <Font name="SansSerif Regular" size="15.0" />
                                     </font>
@@ -194,4 +208,3 @@
         </VBox>
     </children>
 </VBox>
-

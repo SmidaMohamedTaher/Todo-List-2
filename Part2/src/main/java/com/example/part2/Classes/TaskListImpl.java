@@ -12,6 +12,7 @@ public class TaskListImpl extends TaskList{
      * List of the Tasks
      */
     private ArrayList<Task> tasks;
+    private int idUser ;
 
     /**
      * Create a new List of Tasks
@@ -21,8 +22,9 @@ public class TaskListImpl extends TaskList{
         update();
     }
 
-    public TaskListImpl(ArrayList<Task> tasks) {
+    public TaskListImpl(ArrayList<Task> tasks , int idUser) {
         this.tasks = tasks;
+        this.idUser = idUser;
     }
 
     /**
@@ -113,7 +115,7 @@ public class TaskListImpl extends TaskList{
      * the method update to take all the tasks from dateBase and sort it in the List
      */
     public void update(){
-        this.tasks = Task_Data_Base_Method.findAll() ;
+        this.tasks = Task_Data_Base_Method.findTasksByUserId(this.idUser) ;
         sortByDate();
 
     }

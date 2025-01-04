@@ -55,7 +55,7 @@
                         <Insets top="20.0" />
                     </padding>
                     <children>
-                        <Button alignment="CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" styleClass="MenuBtn" stylesheets="@todolist.css" text="Create Task" textFill="WHITE">
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToAdd" prefHeight="35.0" prefWidth="150.0" styleClass="MenuBtn" stylesheets="@todolist.css" text="Create Task">
                             <font>
                                 <Font name="SansSerif Italic" size="12.0" />
                             </font>
@@ -63,7 +63,7 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button alignment="CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" styleClass="MenuBtn" stylesheets="@todolist.css" text="Search for task" textFill="WHITE">
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#gotToSearch" prefHeight="35.0" prefWidth="150.0" styleClass="MenuBtn" stylesheets="@todolist.css" text="Search for task" textFill="WHITE">
                             <font>
                                 <Font name="SansSerif Italic" size="12.0" />
                             </font>
@@ -92,7 +92,7 @@
                         <Insets top="50.0" />
                     </VBox.margin>
                 </Separator>
-                <Button alignment="CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" styleClass="MenuBtn" stylesheets="@todolist.css" text="Logout" textFill="WHITE">
+                <Button alignment="CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" styleClass="MenuBtn" text="Logout" textFill="WHITE">
                     <font>
                         <Font name="SansSerif Italic" size="12.0" />
                     </font>
@@ -149,7 +149,7 @@
                                         <Insets top="70.0" />
                                     </VBox.margin>
                                 </Label>
-                                <ChoiceBox blendMode="OVERLAY" prefWidth="150.0">
+                                <ChoiceBox fx:id="catigoriesChice" blendMode="OVERLAY" prefWidth="150.0">
                                     <VBox.margin>
                                         <Insets left="15.0" top="5.0" />
                                     </VBox.margin>
@@ -178,7 +178,7 @@
                                 <Font name="SansSerif Bold" size="12.0" />
                             </font>
                         </Label>
-                        <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="54.0" prefWidth="212.0" text="Description" textFill="WHITE" HBox.hgrow="ALWAYS">
+                        <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="54.0" prefWidth="153.0" text="Description" textFill="WHITE" HBox.hgrow="ALWAYS">
                             <font>
                                 <Font name="SansSerif Regular" size="12.0" />
                             </font>
@@ -186,13 +186,18 @@
                                 <Insets />
                             </HBox.margin>
                         </Label>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="108.0" text="DueDate" textFill="WHITE" HBox.hgrow="ALWAYS">
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="149.0" text="DueDate" textFill="WHITE" HBox.hgrow="ALWAYS">
                             <font>
                                 <Font name="SansSerif Regular" size="12.0" />
                             </font>
                             <HBox.margin>
                                 <Insets />
                             </HBox.margin>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="119.0" text="Prioritie" textFill="WHITE">
+                            <font>
+                                <Font name="SansSerif Regular" size="12.0" />
+                            </font>
                         </Label>
                         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="146.0" text="Status" textFill="WHITE" HBox.hgrow="ALWAYS">
                             <font>
@@ -216,20 +221,13 @@
         </VBox>
         <ImageView fitHeight="39.0" fitWidth="40.0" layoutX="796.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../../../../../Desktop/Creative%20Cloud%20Files/Sans-titre---1.png" />
+                <Image url="@login.png" />
             </image>
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
         </ImageView>
-        <Label alignment="CENTER" layoutX="766.0" layoutY="63.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="99.0" text="User_name" textFill="WHITE">
-            <font>
-                <Font name="SansSerif Italic" size="12.0" />
-            </font>
-        </Label>
-
-
-        <Label alignment="CENTER" layoutX="695.0" layoutY="62.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="99.0" text="share" textFill="WHITE">
+        <Label fx:id="user_name" alignment="CENTER" layoutX="766.0" layoutY="63.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="99.0" text="User_name" textFill="WHITE">
             <font>
                 <Font name="SansSerif Italic" size="12.0" />
             </font>

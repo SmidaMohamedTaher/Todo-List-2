@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="task_instance" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="533.0" style="-fx-background-color: #505050; -fx-background-radius: 2em;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.part2.taskGuielement">
+<HBox fx:id="task_instance" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#goToEdit" prefHeight="53.0" prefWidth="610.0" style="-fx-background-color: #505050; -fx-background-radius: 2em;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.part2.controllers.taskGuielement">
     <children>
-        <Label fx:id="taskLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="53.0" prefWidth="149.0" text="Task1" textFill="WHITE" HBox.hgrow="ALWAYS">
+        <Label fx:id="taskLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="53.0" prefWidth="120.0" text="Task1" textFill="WHITE" HBox.hgrow="ALWAYS">
             <font>
                 <Font name="SansSerif Regular" size="15.0" />
             </font>
@@ -23,6 +23,11 @@
                 <Font name="SansSerif Regular" size="15.0" />
             </font>
         </Label>
+      <Label fx:id="priortie" alignment="CENTER" contentDisplay="CENTER" prefHeight="53.0" prefWidth="115.0" text="priortie" textFill="WHITE">
+         <font>
+            <Font name="SansSerif Regular" size="15.0" />
+         </font>
+      </Label>
         <Button fx:id="status" mnemonicParsing="false" onAction="#editStatus" prefHeight="34.0" prefWidth="117.0" styleClass="not-complited-button" stylesheets="@todolist.css" text="not complited" HBox.hgrow="ALWAYS">
             <font>
                 <Font name="SansSerif Italic" size="12.0" />
